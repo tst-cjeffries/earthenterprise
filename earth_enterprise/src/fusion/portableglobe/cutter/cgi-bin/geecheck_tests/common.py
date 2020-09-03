@@ -20,7 +20,7 @@ import os
 import platform
 import socket
 
-LATEST_VERSION = '5.3.5'
+LATEST_VERSION = '5.3.6'
 
 SUPPORTED_OS_LIST = {
     'redhat': {'min_release': '6.0',
@@ -61,7 +61,7 @@ def IsFusionInstalled():
 
 def IsGeeServerInstalled():
   """Check if GEE Server is installed."""
-  gee_server_start_script = '/etc/init.d/gefusion'
+  gee_server_start_script = '/etc/init.d/geserver'
   return os.path.exists(gee_server_start_script)
 
 

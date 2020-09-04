@@ -5,6 +5,7 @@
 #include "common/khxml/khxml.h"
 #include "common/khxml/khdom.h"
 #include "autoingest/.idl/storage/AssetDefs.h"
+#include "AssetFactory.h"
 
 template<class AssetType>
 class AssetSerializerInterface {

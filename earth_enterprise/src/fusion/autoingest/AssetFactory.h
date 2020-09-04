@@ -20,7 +20,6 @@
 #include <common/SharedString.h>
 #include <common/khMetaData.h>
 #include "AssetVersionRef.h"
-#include "AssetVersion.h"
 #include "AssetRegistry.h"
 #include "autoingest/.idl/AssetStorage.h"
 

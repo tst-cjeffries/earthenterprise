@@ -6,6 +6,7 @@
 #include "common/khxml/khdom.h"
 #include "autoingest/.idl/storage/AssetDefs.h"
 #include "AssetFactory.h"
+#include "AssetThrowPolicy.h"
 
 template<class AssetType>
 class AssetSerializerInterface {

@@ -20,6 +20,7 @@
 #include <common/SharedString.h>
 #include <common/khMetaData.h>
 #include "AssetVersionRef.h"
+#include "AssetRegistry.h"
 #include "autoingest/.idl/AssetStorage.h"
 
 // The goal of this namspace is to have a single place in the code where all

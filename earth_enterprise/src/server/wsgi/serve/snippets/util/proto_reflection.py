@@ -21,7 +21,7 @@ from serve.snippets.util import dbroot_utils
 from serve.snippets.util import path_converters
 from serve.snippets.util import path_utils
 
-import opengee.google.protobuf.descriptor
+import google.protobuf.descriptor
 
 # TODO: clean up, refactoring: switch to new style path.
 
@@ -31,43 +31,43 @@ def Crash(_):
 
 
 PYTHON_TYPE_BY_PROTOBUF_TYPE = {
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_DOUBLE:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_DOUBLE:
         float,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_FLOAT:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_FLOAT:
         float,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_INT64:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_INT64:
         long,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_UINT64:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_UINT64:
         long,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_INT32:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_INT32:
         int,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_FIXED64:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_FIXED64:
         long,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_FIXED32:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_FIXED32:
         int,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_BOOL:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_BOOL:
         bool,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_STRING:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_STRING:
         str,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_GROUP:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_GROUP:
         Crash,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_MESSAGE:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_MESSAGE:
         Crash,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_BYTES:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_BYTES:
         str,
     # Technically this should probably be long. should be able to tell.
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_UINT32:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_UINT32:
         int,
     # We do the int conversion earlier EnumTextToValue.
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_ENUM:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_ENUM:
         int,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_SFIXED32:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_SFIXED32:
         int,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_SFIXED64:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_SFIXED64:
         long,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_SINT32:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_SINT32:
         int,
-    opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_SINT64:
+    google.protobuf.descriptor.FieldDescriptor.TYPE_SINT64:
         long
 }
 
@@ -102,9 +102,9 @@ def EnumTextToValue(fdesc, enum_text):
 # pbuf.DESCRIPTOR.fields_by_name.iteritems() -> name, value) -- name, value
 # pdesc.fields -> fdesc
 # https://developers.google.com/protocol-buffers/docs/reference/python/
-#    opengee.google.protobuf.descriptor.Descriptor-class
+#    google.protobuf.descriptor.Descriptor-class
 # https://developers.google.com/protocol-buffers/docs/reference/python/
-#    opengee.google.protobuf.descriptor.FieldDescriptor-class
+#    google.protobuf.descriptor.FieldDescriptor-class
 def _NavigateToField(protobuf, field_path, log=None):
   """Navigates via structure (ie protobuf can be empty).
 
@@ -180,8 +180,8 @@ def SetValueAtFieldPath(protobuf, field_path, maybe_text_value, log):
   if isinstance(value, basestring):
     typ = TypeAtFieldPath(protobuf, field_path, log)
     if (not value and
-        (typ != opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_STRING and
-         typ != opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_BYTES)):
+        (typ != google.protobuf.descriptor.FieldDescriptor.TYPE_STRING and
+         typ != google.protobuf.descriptor.FieldDescriptor.TYPE_BYTES)):
       field_desc = FieldDescriptorAtFieldPath(protobuf, field_path)
       value = field_desc.default_value
     else:

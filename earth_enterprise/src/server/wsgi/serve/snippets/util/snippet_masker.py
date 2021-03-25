@@ -30,7 +30,7 @@ from serve.snippets.util import proto_reflection
 from serve.snippets.util import sparse_tree
 
 # TODO: should fold this google.* into proto_reflection
-import opengee.google.protobuf.descriptor
+import google.protobuf.descriptor
 
 
 def ForcedFieldValues(log):
@@ -146,7 +146,7 @@ def _LoadPathValuesFromDict(snippets, log):
         dbroot_utils.MakeEmptyDbroot(), path)
 
     log.debug("field:[%s], value:[%s]", path, str(value))
-    if field_type == opengee.google.protobuf.descriptor.FieldDescriptor.TYPE_BOOL:
+    if field_type == google.protobuf.descriptor.FieldDescriptor.TYPE_BOOL:
       if isinstance(value, str):
         value = _FlexibleBool(value)
         log.debug("path getting bool default: %s: %s", path, str(value))

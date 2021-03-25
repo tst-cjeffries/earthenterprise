@@ -101,7 +101,7 @@ local_env.ExecuteOnClean('rm -rf %s' % current_dir)
 if 'install' in COMMAND_LINE_TARGETS:
   local_env.InstallFileOrDir(
       '%s/lib' % install_root,
-      '%s/opt/google/gepython/Python-%s' % (
+      '%s/opt/google/gepython/Python-%s/opengee' % (
           local_env.installdirs['common_root'], local_env['python_version']),
        protobuf_install, 'install')
   local_env.InstallFileOrDir(

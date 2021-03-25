@@ -63,7 +63,7 @@ NoCache(protobuf_target)
 # into local directory)?
 
 # [3] Create protobuf-py master installer.
-install_root_lib = '%s/lib/python%s/site-packages/opengee' % (
+install_root_lib = '%s/lib/python%s/site-packages' % (
     install_root, local_env['python_major_version'])
 install_root_doc = '%s/share/doc/packages/%s' % (
     install_root_opt, protobuf_ge_version)
@@ -101,7 +101,7 @@ local_env.ExecuteOnClean('rm -rf %s' % current_dir)
 if 'install' in COMMAND_LINE_TARGETS:
   local_env.InstallFileOrDir(
       '%s/lib' % install_root,
-      '%s/opt/google/gepython/Python-%s' % (
+      '%s/opt/google/gepython/Python-%s/opengee' % (
           local_env.installdirs['common_root'], local_env['python_version']),
        protobuf_install, 'install')
   local_env.InstallFileOrDir(
